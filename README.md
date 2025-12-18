@@ -1,5 +1,4 @@
-# safewalk-sa
-SafeWalk isn’t about fear — it’s about preparedness and dignity.
+
 # 🛡️ SafeWalk SA  
 ### *A community-driven personal safety companion for South Africa.*
 
@@ -67,8 +66,75 @@ Quick access to:
 
 ---
 
-## 🏗️ Architecture Overview
+Key benefits:
+- Separation of concerns  
+- Testability  
+- Scalability  
+- Maintainability  
 
-SafeWalk SA is built with a **Clean Architecture** approach:
+---
+
+## 🧩 Tech Stack
+
+### Backend
+- .NET 9 Web API  
+- Clean Architecture  
+- EF Core for data access  
+- Azure SQL Database  
+- Azure Maps or Google Maps API  
+- Twilio or Clickatell for SMS alerts  
+- Firebase for push notifications (optional)
+
+### Security
+- JWT Authentication  
+- Role-based access  
+- Privacy-first location handling (no long-term tracking)
+
+### Deployment
+- Azure App Service  
+- CI/CD via GitHub Actions (planned)
+
+---
+
+## 🚀 Planned Roadmap
+
+### Phase 1 – MVP
+- User registration + login  
+- Trusted circle management  
+- Start/stop journey  
+- Auto-expiring check-ins  
+- Panic alert system  
+- Basic UI (web/mobile-ready)
+
+### Phase 2 – Mobile-first
+- Convert to Progressive Web App (PWA)  
+- Offline mode  
+- Push notifications  
+
+### Phase 3 – Community Integration
+- Partnerships with campuses  
+- Community safety patrols  
+- Anonymous incident reporting  
+
+### Phase 4 – Advanced Features
+- Predictive route risk scoring (AI)  
+- Heatmaps of unsafe routes  
+- Bluetooth beacon integration  
+- Safe taxi verification system  
+
+---
+
+## 💙 Ethical Foundations & Privacy
+
+SafeWalk SA follows strict principles:
+- **No constant tracking**
+- **Location data is temporary**
+- **Users own their data**
+- **Only trusted contacts receive alerts**
+- **No data is sold, ever**
+
+This app exists to *protect people, not monitor them*.
+
+
 
 
