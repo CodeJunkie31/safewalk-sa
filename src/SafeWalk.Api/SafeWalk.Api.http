@@ -1,0 +1,6 @@
+@SafeWalk.Api_HostAddress = http://localhost:5280
+
+GET {{SafeWalk.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
