@@ -12,7 +12,7 @@ namespace SafeWalk.Infrastructure.Services
         {
             // TEMP: log to console for local dev
             Console.WriteLine($"[SafeWalk SMS] To: {phoneNumber} | Message: {message}");
-            return Task.CompletedTask;
+            return Task.CompletedTask; // to send sms', integrate with an SMS provider here
         }
     }
 }
