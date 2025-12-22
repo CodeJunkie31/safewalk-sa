@@ -1,10 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SafeWalk.Application.Interfaces.Infrastructure;
 
 namespace SafeWalk.Infrastructure.Services
 {
-    internal class SmsNotificationService
+    // Later you can plug in Twilio / Clickatell here.
+    public class SmsNotificationService : INotificationService
     {
+        public Task SendSmsAsync(
+            string phoneNumber,
+            string message,
+            CancellationToken cancellationToken = default)
+        {
+            // TEMP: log to console for local dev
+            Console.WriteLine($"[SafeWalk SMS] To: {phoneNumber} | Message: {message}");
+            return Task.CompletedTask;
+        }
     }
 }
+
