@@ -1,14 +1,13 @@
-﻿using SafeWalk.Application.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SafeWalk.Domain.Entities;
 
 namespace SafeWalk.Application.Interfaces.Persistence
 {
     public interface IUserRepository
     {
-        Task<UserDto?> GetByIdAsync(Guid userId, CancellationToken cancellationToken = default);
-        Task<UserDto?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
-        Task<Guid> CreateAsync(UserDto user, string passwordHash, CancellationToken cancellationToken = default);
+        Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
+        Task<Guid> CreateAsync(User user, CancellationToken cancellationToken = default);
     }
 }
+
+

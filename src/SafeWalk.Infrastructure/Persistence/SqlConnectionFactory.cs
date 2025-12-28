@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 
 namespace SafeWalk.Infrastructure.Persistence
 {
-    // IMPORTANT: this class MUST implement ISqlConnectionFactory
     public class SqlConnectionFactory : ISqlConnectionFactory
     {
         private readonly string _connectionString;
@@ -20,4 +19,5 @@ namespace SafeWalk.Infrastructure.Persistence
         }
     }
 }
+
 

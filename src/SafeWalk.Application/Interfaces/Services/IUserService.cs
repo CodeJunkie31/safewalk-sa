@@ -1,8 +1,5 @@
 ﻿using SafeWalk.Application.Common;
 using SafeWalk.Application.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SafeWalk.Application.Interfaces.Services
 {
@@ -14,5 +11,9 @@ namespace SafeWalk.Application.Interfaces.Services
             string phoneNumber,
             string password,
             CancellationToken cancellationToken = default);
+
+        Task<UserDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }
+
+
