@@ -1,7 +1,9 @@
 using Microsoft.Extensions.Configuration;
+using SafeWalk.Application.Interfaces.Persistence;
 using SafeWalk.Application.Interfaces.Services;
 using SafeWalk.Application.Services;
 using SafeWalk.Infrastructure.DependencyInjection;
+using SafeWalk.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,9 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJourneyService, JourneyService>();
 builder.Services.AddScoped<IAlertService, AlertService>();
+builder.Services.AddScoped<IAlertRepository, AlertRepository>();
+builder.Services.AddScoped<ITrustedContactRepository, TrustedContactRepository>();
+
 
 var app = builder.Build();
 

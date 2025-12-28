@@ -11,6 +11,8 @@ namespace SafeWalk.Application.DTOs
         public string ContactName { get; set; } = default!;
         public string ContactPhoneNumber { get; set; } = default!;
         public string? Relationship { get; set; }
+        public DateTime CreatedAtUtc { get; set; }   
+        public DateTime? UpdatedAtUtc { get; set; }
     }
 
 }

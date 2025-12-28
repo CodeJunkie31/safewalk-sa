@@ -10,5 +10,7 @@ namespace SafeWalk.Application.DTOs
         public Guid JourneyId { get; set; }
         public string Message { get; set; } = default!;
         public DateTime SentAtUtc { get; set; }
+        public DateTime CreatedAtUtc { get; set; }
+
     }
 }

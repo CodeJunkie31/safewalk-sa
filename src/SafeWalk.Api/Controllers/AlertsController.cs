@@ -10,52 +10,33 @@ namespace SafeWalk.Api.Controllers
     public class AlertsController : ControllerBase
     {
         private readonly IAlertService _alertService;
-        private readonly IJourneyService _journeyService;
 
-        public AlertsController(
-            IAlertService alertService,
-            IJourneyService journeyService)
+        public AlertsController(IAlertService alertService)
         {
             _alertService = alertService;
-            _journeyService = journeyService;
         }
 
-        // Manual panic alert trigger
         [HttpPost("panic")]
-        public async Task<IActionResult> Panic(
-            [FromBody] PanicAlertRequest request,
-            CancellationToken cancellationToken)
+        public async Task<IActionResult> Panic([FromBody] PanicRequest req, CancellationToken ct)
         {
-            var result = await _alertService.SendJourneyAlertAsync(
-                request.JourneyId,
-                cancellationToken);
-
-            if (!result.Success)
-            {
-                return BadRequest(new ApiErrorResponse
-                {
-                    Message = result.Error ?? "Failed to send panic alert."
-                });
-            }
-
-            return Ok(new { success = true });
+            var result = await _alertService.PanicAsync(req.JourneyId, ct);
+            if (!result.Success) return BadRequest(new { error = result.Error });
+            return Ok(new { success = result.Value });
         }
 
-        // Overdue check – can be called by a background job / scheduler or manually for now
         [HttpPost("check-overdue/{journeyId:guid}")]
-        public async Task<IActionResult> CheckOverdue(Guid journeyId, CancellationToken cancellationToken)
+        public async Task<IActionResult> CheckOverdue(Guid journeyId, CancellationToken ct)
         {
-            var result = await _journeyService.EscalateIfOverdueAsync(journeyId, cancellationToken);
-
-            if (!result.Success)
-            {
-                return BadRequest(new ApiErrorResponse
-                {
-                    Message = result.Error ?? "Failed to check overdue journey."
-                });
-            }
-
+            var result = await _alertService.CheckOverdueAsync(journeyId, ct);
+            if (!result.Success) return BadRequest(new { error = result.Error });
             return Ok(new { escalated = result.Value });
         }
     }
+
+    public class PanicRequest
+    {
+        public Guid JourneyId { get; set; }
+    }
+
+
 }
